@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <title>Three.js Boilerplate</title>
+    <style>
+        html,
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            background: #000C1C;
+            background: -moz-linear-gradient(top, #000C1C 0%, #15374F 50%, #000C1C 100%);
+            background: -webkit-linear-gradient(top, #000C1C 0%, #15374F 50%, #000C1C 100%);
+            background: linear-gradient(to bottom, #000 0%, #1e1e1e 50%, #000 100%);
+            filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#000C1C', endColorstr='#15374F', GradientType=0);
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://threejs.org/build/three.js"></script>
+    <script src="/OrbitControls.js"></script>
+    <script id="vertexShader" type="x-shader/x-vertex">
+        varying vec3 vNormal; void main() { vNormal = normalize( normalMatrix * normal ); gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 ); }
+      </script>
+    <script id="fragmentShader" type="x-shader/x-vertex">
+        varying vec3 vNormal; void main() { float intensity = pow( 0.6 - dot( vNormal, vec3( 0.0, 0.0, 0.5 ) ), 4.0 ); gl_FragColor = vec4( 0.75, 0.82, 0.85, 1.0 ) * intensity; }
+      </script>
+    <script src="/index.js"></script>
+    <div id="canvas"></div>
+</body>
+
+</html>
